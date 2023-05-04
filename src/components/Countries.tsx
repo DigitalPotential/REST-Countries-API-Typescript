@@ -31,13 +31,13 @@ const Countries = () => {
           <h2 className="text-3xl tracking-widest">Loading...</h2>
         </div>
       ) : (
-        countries.map((country, idx) => {
+        countries.map((country, index) => {
           return (
             <>
               <Link
                 to={`/country/${country.name.common}`}
                 className="w-[300px] rounded-lg shadow-lg cursor-pointer mb-[80px]"
-                key={idx}
+                key={index}
               >
                 <motion.div
                   initial={{

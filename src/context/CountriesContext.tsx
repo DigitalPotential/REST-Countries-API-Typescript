@@ -50,7 +50,7 @@ export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({
         return () => {
             isMounted = false;
         };
-    }, []);
+    }, );
 
     return (
         <CountriesContext.Provider

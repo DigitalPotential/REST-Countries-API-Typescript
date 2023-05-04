@@ -4,21 +4,64 @@ export interface Country {
     official: string;
     nativeName: { [key: string]: { official: string; common: string } };
   };
-  tld: string[];
-  cca2: string;
-  ccn3: string;
-  cca3: string;
-  independent: boolean;
-  status: string;
-  unMember: boolean;
-  currencies: { [key: string]: { name: string; symbol: string } };
-  idd: { root: string; suffixes: string[] };
-  capital: string[];
-  altSpellings: string[];
-  region: string;
+  topLevelDomain: string[];
+  alpha2Code: string;
+  alpha3Code: string;
+  callingCodes: string[];
+  capital?: string;
+  altSpellings?: string[];
   subregion: string;
-  languages: { [key: string]: string };
-  translations: { [key: string]: { official: string; common: string } };
-  flag: string;
+  region: Region;
   population: number;
+  latlng?: number[];
+  demonym: string;
+  area?: number;
+  timezones: string[];
+  borders?: string[];
+  nativeName: string;
+  numericCode: string;
+  flags: Flags;
+  currencies?: Currency[];
+  languages: Language[]; // Update the languages field
+  translations: { [key: string]: { official: string; common: string } }; // Update the translations field
+  flag: string;
+  regionalBlocs?: RegionalBloc[];
+  cioc?: string;
+  independent: boolean;
+  gini?: number;
+  unMember?: boolean; // Add this field
+  status?: string; // Add this field
+}
+
+export enum Region {
+  Africa = "Africa",
+  Americas = "Americas",
+  Asia = "Asia",
+  Europe = "Europe",
+  Oceania = "Oceania",
+}
+
+export interface Flags {
+  svg: string;
+  png: string;
+}
+
+export interface Currency {
+  code: string;
+  name: string;
+  symbol: string;
+}
+
+export interface RegionalBloc {
+  acronym: string;
+  name: string;
+  otherNames?: string[];
+  otherAcronyms?: string[];
+}
+
+export interface Language {
+  iso639_1?:   string;
+  iso639_2:    string;
+  name:        string;
+  nativeName?: string;
 }
