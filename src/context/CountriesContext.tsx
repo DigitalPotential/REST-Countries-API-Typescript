@@ -1,51 +1,60 @@
-import { createContext, useState, useEffect, Dispatch, SetStateAction } from "react";
+import React, {
+    createContext,
+    useState,
+    useEffect,
+    Dispatch,
+    SetStateAction,
+} from "react";
 import { API_URL } from "../utils/api";
-import { Country } from "../types/CountryAPI"; 
+import { Country } from "../types/CountryAPI";
 
 interface CountriesContextInterface {
-  countries: Country[];
-  setCountries: Dispatch<SetStateAction<Country[]>>;
-  isLoading: boolean;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
+    countries: Country[];
+    setCountries: Dispatch<SetStateAction<Country[]>>;
+    isLoading: boolean;
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-const CountriesContext = createContext<CountriesContextInterface | undefined>(undefined);
+const CountriesContext = createContext<CountriesContextInterface | undefined>(
+    undefined
+);
 
-export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [countries, setCountries] = useState<Country[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({
+    children,
+}) => {
+    const [countries, setCountries] = useState<Country[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    let isMounted = true;
-  
-    const fetchCountries = async () => {
-      try {
-        const response = await fetch(`${API_URL}/all`);
-        const data = await response.json();
-        if (isMounted) {
-          setCountries(data);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-  
-    fetchCountries();
-  
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-  
+    useEffect(() => {
+        let isMounted = true;
 
-  return (
-    <CountriesContext.Provider
-      value={{ countries, setCountries, isLoading, setIsLoading }}
-    >
-      {children}
-    </CountriesContext.Provider>
-  );
+        const fetchCountries = async () => {
+            try {
+                const response = await fetch(`${API_URL}/all`);
+                const data = await response.json();
+                if (isMounted) {
+                    setCountries(data);
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchCountries();
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
+    return (
+        <CountriesContext.Provider
+            value={{ countries, setCountries, isLoading, setIsLoading }}
+        >
+            {children}
+        </CountriesContext.Provider>
+    );
 };
 
 export default CountriesContext;

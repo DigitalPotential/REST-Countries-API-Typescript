@@ -1,18 +1,18 @@
 import IonIcon from "@reacticons/ionicons";
 
-const Arrow = () => {
+const SearchIcon = () => {
     return (
         <IonIcon
             style={{
                 color: "hsl(200, 15%, 8%)",
-                position: "relative",
-                top: "5px",
-                right: "15px",
+                position: "absolute",
+                top: "15px",
+                left: "60px",
                 fontSize: "22px",
             }}
-            name="arrow-back-circle-outline"
+            name="search"
         />
     );
 };
 
-export default Arrow;
+export default SearchIcon;

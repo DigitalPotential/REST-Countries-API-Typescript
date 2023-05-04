@@ -1,8 +1,8 @@
 export interface Country {
     name: {
-      common: string;
-      official: string;
-      nativeName: { [key: string]: { official: string; common: string } };
+        common: string;
+        official: string;
+        nativeName: { [key: string]: { official: string; common: string } };
     };
     tld: string[];
     cca2: string;
@@ -19,5 +19,4 @@ export interface Country {
     subregion: string;
     languages: { [key: string]: string };
     translations: { [key: string]: { official: string; common: string } };
-  }
-  
+}

@@ -1,10 +1,10 @@
 import IonIcon from "@reacticons/ionicons";
 
-const Arrow = () => {
+const ArrowWhite = () => {
     return (
         <IonIcon
             style={{
-                color: "hsl(200, 15%, 8%)",
+                color: "white",
                 position: "relative",
                 top: "5px",
                 right: "15px",
@@ -15,4 +15,4 @@ const Arrow = () => {
     );
 };
 
-export default Arrow;
+export default ArrowWhite;
