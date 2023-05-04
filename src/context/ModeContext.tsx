@@ -5,7 +5,11 @@ interface ModeContextType {
     setMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ModeContext = createContext<ModeContextType | null>(null);
+const ModeContext = createContext<ModeContextType>({
+  mode: false,
+  setMode: () => {},
+});
+
 
 export const ModeProvider = ({ children }: { children: ReactNode }) => {
     const [mode, setMode] = useState(false);

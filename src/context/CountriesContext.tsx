@@ -15,9 +15,12 @@ interface CountriesContextInterface {
     setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-const CountriesContext = createContext<CountriesContextInterface | undefined>(
-    undefined
-);
+const CountriesContext = createContext<CountriesContextInterface>({
+  countries: [],
+  setCountries: () => {},
+  isLoading: true,
+  setIsLoading: () => {},
+});
 
 export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
@@ -32,6 +35,7 @@ export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({
             try {
                 const response = await fetch(`${API_URL}/all`);
                 const data = await response.json();
+                console.log(data);
                 if (isMounted) {
                     setCountries(data);
                     setIsLoading(false);
@@ -40,7 +44,7 @@ export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({
                 console.log(error);
             }
         };
-
+        console.log(isLoading)
         fetchCountries();
 
         return () => {
