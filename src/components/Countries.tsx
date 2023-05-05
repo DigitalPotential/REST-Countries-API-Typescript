@@ -60,7 +60,7 @@ const Countries = () => {
                   <div className="image h-[200px] w-[100%]">
                     <img
                       className="h-[100%] w-[100%] object-cover block rounded-t-lg"
-                      src={country.flag}
+                      src={country.flags.svg}
                       alt="flag"
                     />
                   </div>

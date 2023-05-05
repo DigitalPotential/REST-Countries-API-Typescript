@@ -22,15 +22,15 @@ export interface Country {
   numericCode: string;
   flags: Flags;
   currencies?: Currency[];
-  languages: Language[]; // Update the languages field
-  translations: { [key: string]: { official: string; common: string } }; // Update the translations field
+  languages: Language[];
+  translations: { [key: string]: { official: string; common: string } };
   flag: string;
   regionalBlocs?: RegionalBloc[];
   cioc?: string;
   independent: boolean;
   gini?: number;
-  unMember?: boolean; // Add this field
-  status?: string; // Add this field
+  unMember?: boolean;
+  status?: string;
 }
 
 export enum Region {

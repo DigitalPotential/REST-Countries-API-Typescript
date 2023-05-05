@@ -32,8 +32,6 @@ const CountryInfo = () => {
         getCountryByName();
     }, [singleCountry]);
 
-    // console.log(country[0]);
-
     return (
         <>
             <div
@@ -80,7 +78,7 @@ const CountryInfo = () => {
                                         translateX: -500,
                                     }}
                                     className="w-[100%] h-[300px] object-cover block"
-                                    src={item.flag}
+                                    src={item.flags.svg}
                                     alt=""
                                 />
                             </div>
@@ -137,7 +135,7 @@ const CountryInfo = () => {
                                         <p>
                                             Languages:{" "}
                                             <span className="text-light-darkGray">
-                                                {item.languages[0].name}
+                                                {item.languages?.[0]?.name || "N/A"}
                                             </span>
                                         </p>
                                     </div>

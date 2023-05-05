@@ -35,7 +35,6 @@ export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({
             try {
                 const response = await fetch(`${API_URL}/all`);
                 const data = await response.json();
-                console.log(data);
                 if (isMounted) {
                     setCountries(data);
                     setIsLoading(false);
@@ -44,13 +43,12 @@ export const CountriesProvider: React.FC<{ children: React.ReactNode }> = ({
                 console.log(error);
             }
         };
-        console.log(isLoading)
         fetchCountries();
 
         return () => {
             isMounted = false;
         };
-    }, );
+    }, []);
 
     return (
         <CountriesContext.Provider
