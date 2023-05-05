@@ -3,12 +3,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CountriesProvider } from "./context/CountriesContext";
 import { ModeProvider } from "./context/ModeContext";
 import CountryInfo from "./components/CountryInfo";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
     return (
         <CountriesProvider>
             <ModeProvider>
                 <BrowserRouter>
+                    <Navbar />
                     <Routes>
                         <Route path="/" element={<Main />} />
                         <Route
@@ -16,6 +19,7 @@ function App() {
                             element={<CountryInfo />}
                         />
                     </Routes>
+                    <Footer />
                 </BrowserRouter>
             </ModeProvider>
         </CountriesProvider>
