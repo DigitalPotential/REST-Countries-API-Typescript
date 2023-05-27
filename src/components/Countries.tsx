@@ -17,7 +17,7 @@ const Countries = () => {
         damping: 30,
         restDelta: 0.001,
     });
-
+    
     return (
         <>
             <motion.div
@@ -25,11 +25,11 @@ const Countries = () => {
                 style={{ scaleX }}
             />
             {isLoading ? (
-                <div className="w-[100px] h-[100vh] mt-[200px] font-[800]">
+                <div className="w-[100px] min-h-screen mt-[200px] font-[800]">
                     <h2 className="text-3xl tracking-widest">Loading...</h2>
                 </div>
             ) : (
-                countries.map((country, index) => {
+                Array.isArray(countries) && countries.map((country, index) => {
                     return (
                         <>
                             <Link
@@ -103,24 +103,26 @@ const Countries = () => {
                 <ScrollToTop
                     top={20}
                     smooth
-                    style={{ marginRight: "20px", zIndex: "999" }}
-                >
-                    <IonIcon
-                        style={{ color: "black", fontSize: "4rem" }}
-                        name="arrow-up-circle-sharp"
-                    />
-                </ScrollToTop>
+                    style={{ marginRight: "20px", zIndex: "10", backgroundColor: 'transparent', boxShadow: 'none' }}
+                    component={
+                        <IonIcon
+                            style={{ color: "black", fontSize: "4rem" }}
+                            name="caret-up-circle-outline"
+                        />
+                    }
+                />
             ) : (
                 <ScrollToTop
                     top={20}
                     smooth
-                    style={{ marginRight: "20px", zIndex: "10" }}
-                >
-                    <IonIcon
-                        style={{ color: "white", fontSize: "4rem" }}
-                        name="caret-up-circle-outline"
-                    />
-                </ScrollToTop>
+                    style={{ marginRight: "20px", zIndex: "10", backgroundColor: 'transparent', boxShadow: 'none' }}
+                    component={
+                        <IonIcon
+                            style={{ color: "white", fontSize: "4rem" }}
+                            name="caret-up-circle-outline"
+                        />
+                    }
+                />
             )}
         </>
     );

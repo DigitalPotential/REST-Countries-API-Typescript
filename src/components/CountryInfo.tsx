@@ -6,21 +6,40 @@ import ModeContext from "../context/ModeContext";
 import { API_URL } from "../utils/api";
 import { motion } from "framer-motion";
 import { Country } from "../types/CountryAPI";
+import CountriesContext from "../context/CountriesContext";
 
 const CountryInfo = () => {
     const params = useParams();
     const [country, setCountry] = useState<Country[]>([]);
-
     const value = Object.values(params);
     const singleCountry = value[0];
 
     const { mode } = useContext(ModeContext);
+    const { countries } = useContext(CountriesContext);
+
+    const fetchCountryName = async (alpha3Code) => {
+        try {
+            const response = await fetch(
+                `https://restcountries.com/v3.1/alpha/${alpha3Code}`
+            );
+            const data = await response.json();
+
+            if (!data.name) {
+                console.error("No name property found in the response:", data);
+                return "";
+            }
+
+            return data.name.common;
+        } catch (error) {
+            console.error("Error fetching country name:", error);
+        }
+    };
 
     useEffect(() => {
         const getCountryByName = async () => {
             try {
                 const res = await fetch(`${API_URL}/name/${singleCountry}`);
-                if (!res.ok) throw new Error("Could not found!");
+                if (!res.ok) throw new Error("Could not find Country!");
 
                 const data = await res.json();
                 setCountry(data);
@@ -91,7 +110,9 @@ const CountryInfo = () => {
                                         <p>
                                             Native Name:{" "}
                                             <span className="text-light-darkGray">
-                                                {item.nativeName}
+                                                {Object.values(
+                                                    item.name.nativeName
+                                                )[0].official || "N/A"}
                                             </span>
                                         </p>
                                         <p>
@@ -119,43 +140,65 @@ const CountryInfo = () => {
                                             </span>
                                         </p>
                                     </div>
-                                    <div className="right space-y-2">
+                                    <div className="right space-y-2 my-8">
                                         <p>
                                             Top Level Domain:{" "}
                                             <span className="text-light-darkGray">
-                                                {item.topLevelDomain}
+                                                {item.tld[0] || "N/A"}
                                             </span>
                                         </p>
                                         <p>
                                             Currencies:{" "}
                                             <span className="text-light-darkGray">
-                                                {item.currencies?.[0]?.name || "N/A"}
+                                                {item.currencies[
+                                                    Object.keys(
+                                                        item.currencies
+                                                    )[0]
+                                                ]?.name || "N/A"}
                                             </span>
                                         </p>
                                         <p>
                                             Languages:{" "}
                                             <span className="text-light-darkGray">
-                                                {item.languages?.[0]?.name || "N/A"}
+                                                {Object.values(
+                                                    item.languages
+                                                )[0] || "N/A"}
                                             </span>
                                         </p>
                                     </div>
                                 </div>
                                 <div className="borders space-x-2 mb-12 mt-6 lg:mb-0 flex items-center flex-wrap">
                                     <p className="mt-2">Border Countries:</p>
-                                    {item.borders?.length ? (
-                                        item.borders.map((country, index) => (
-                                            <Link
-                                                key={index}
-                                                className={`${
-                                                    mode
-                                                        ? "bg-white"
-                                                        : "bg-dark-darkBlue"
-                                                } text-[12px] py-2 px-4 lg:px-8 mt-2 rounded-md shadow-lg cursor-pointer`}
-                                                to={`/`}
-                                            >
-                                                <span> {country} </span>
-                                            </Link>
-                                        ))
+                                    {country[0]?.borders?.length ? (
+                                        country[0].borders.map(
+                                            (alpha3Code, index) => (
+                                                <Link
+                                                    key={index}
+                                                    className={`${
+                                                        mode
+                                                            ? "bg-white"
+                                                            : "bg-dark-darkBlue"
+                                                    } text-[12px] py-2 px-4 lg:px-8 mt-2 rounded-md shadow-lg cursor-pointer`}
+                                                    to={`/country/${
+                                                        countries.find(
+                                                            (country) =>
+                                                                country.cca3 ===
+                                                                alpha3Code
+                                                        )?.name?.common ||
+                                                        alpha3Code
+                                                    }`}
+                                                >
+                                                    <span>
+                                                        {countries.find(
+                                                            (country) =>
+                                                                country.cca3 ===
+                                                                alpha3Code
+                                                        )?.name?.common ||
+                                                            alpha3Code}
+                                                    </span>
+                                                </Link>
+                                            )
+                                        )
                                     ) : (
                                         <p className="mt-2 lg:text-2xl">
                                             No borders...
