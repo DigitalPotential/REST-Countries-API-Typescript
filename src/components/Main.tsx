@@ -9,38 +9,46 @@ import Filter from "../constants/Filter";
 import { API_URL } from "../utils/api";
 
 const Main = () => {
-  const { mode } = useContext(ModeContext);
-  const { setCountries } = useContext(CountriesContext);
+    const { mode } = useContext(ModeContext);
+    const { setCountries } = useContext(CountriesContext);
 
-  const getCountryByRegion = async (regionName: string) => {
-    try {
-      const res = await fetch(`${API_URL}/region/${regionName}`);
-      if (!res.ok) throw new Error("Failed...");
-      const data = await res.json();
-      setCountries(data);
-    } catch (error) {
-        console.error((error as Error).message);
-    }
-  };
+    const getCountryByRegion = async (regionName: string) => {
+        try {
+            const res = await fetch(`${API_URL}/region/${regionName}`);
+            if (!res.ok) throw new Error("Failed...");
+            const data = await res.json();
+            setCountries(data);
+        } catch (error) {
+            console.error((error as Error).message);
+        }
+    };
 
-  return (
-    <main
-      className={`${mode ? "bg-white" : "bg-dark-veryDarkBlue"} ${
-        mode ? "text-light-veryDarkBlue" : "text-white"
-      } px-[20px] md:px-[80px] py-[40px]`}
-    >
-      <div className="top flex flex-col gap-10 xxl:gap-0 xl:flex-row xl:justify-between xl:items-center">
-        <div className="search relative">
-          {mode ? <SearchIcon /> : <SearcIconWhite />}
-          <Search />
-        </div>
-        <Filter onSelect={getCountryByRegion} />
-      </div>
-      <div className="bottom min-h-[80vh] pt-[40px] grid grid-cols-1 justify-items-center md:grid-cols-2 md:gap-10 xxl:gap-0 xxl:grid-cols-4">
-        <Countries />
-      </div>
-    </main>
-  );
+    return (
+        <main
+            className={`${mode ? "bg-white" : "bg-dark-veryDarkBlue"} ${
+                mode ? "text-light-veryDarkBlue" : "text-white"
+            } px-[20px] md:px-[80px] py-[40px]`}
+        >
+            <div className="top flex flex-col gap-10 xxl:gap-0 xl:flex-row xl:justify-between xl:items-center">
+                <div className="search relative flex flex-row">
+                    {mode ? <SearchIcon /> : <SearcIconWhite />}
+                    <Search />
+                    <button
+                        className={`${
+                            mode ? "bg-white" : "bg-dark-darkBlue"
+                        } py-2 px-10 rounded-md shadow-lg border-0 cursor-pointer ml-3`}
+                        onClick={() => window.location.reload()}
+                    >
+                        Reset
+                    </button>
+                </div>
+                <Filter onSelect={getCountryByRegion} />
+            </div>
+            <div className="bottom min-h-[80vh] pt-[40px] grid grid-cols-1 justify-items-center md:grid-cols-2 md:gap-10 xxl:gap-0 xxl:grid-cols-4">
+                <Countries />
+            </div>
+        </main>
+    );
 };
 
 export default Main;

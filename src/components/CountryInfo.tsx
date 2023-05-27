@@ -17,24 +17,6 @@ const CountryInfo = () => {
     const { mode } = useContext(ModeContext);
     const { countries } = useContext(CountriesContext);
 
-    const fetchCountryName = async (alpha3Code) => {
-        try {
-            const response = await fetch(
-                `https://restcountries.com/v3.1/alpha/${alpha3Code}`
-            );
-            const data = await response.json();
-
-            if (!data.name) {
-                console.error("No name property found in the response:", data);
-                return "";
-            }
-
-            return data.name.common;
-        } catch (error) {
-            console.error("Error fetching country name:", error);
-        }
-    };
-
     useEffect(() => {
         const getCountryByName = async () => {
             try {
