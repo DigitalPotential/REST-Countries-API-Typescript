@@ -7,6 +7,7 @@ export interface Country {
   tld: string[];
   alpha2Code: string;
   alpha3Code: string;
+  cca3: string;
   callingCodes: string[];
   capital?: string;
   altSpellings?: string[];
