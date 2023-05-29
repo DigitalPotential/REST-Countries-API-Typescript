@@ -162,7 +162,7 @@ const CountryInfo = () => {
                                                     to={`/country/${
                                                         countries.find(
                                                             (country) =>
-                                                                country.alpha3Code ===
+                                                                country.cca3 ===
                                                                 alpha3Code
                                                         )?.name?.common ||
                                                         alpha3Code
@@ -171,7 +171,7 @@ const CountryInfo = () => {
                                                     <span>
                                                         {countries.find(
                                                             (country) =>
-                                                                country.alpha3Code ===
+                                                                country.cca3 ===
                                                                 alpha3Code
                                                         )?.name?.common ||
                                                             alpha3Code}
