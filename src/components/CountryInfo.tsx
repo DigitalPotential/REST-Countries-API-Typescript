@@ -40,14 +40,12 @@ const CountryInfo = () => {
                     mode ? "text-light-veryDarkBlue" : "text-white"
                 } px-[25px] lg:px-[80px] py-[40px] lg:h-[100vh] flex flex-col lg:flex-row lg:items-center lg:gap-[150px]`}
             >
-                {country.map((item, index) => {
+                {country.map((item) => {
                     return (
                         <>
                             <div className="img lg:w-[600px] lg:h-[500px] space-y-20">
                                 <motion.button
                                     whileHover={{ scale: 1.2 }}
-                                    onHoverStart={(e) => {}}
-                                    onHoverEnd={(e) => {}}
                                 >
                                     <Link
                                         to="/"
@@ -164,7 +162,7 @@ const CountryInfo = () => {
                                                     to={`/country/${
                                                         countries.find(
                                                             (country) =>
-                                                                country.cca3 ===
+                                                                country.alpha3Code ===
                                                                 alpha3Code
                                                         )?.name?.common ||
                                                         alpha3Code
@@ -173,7 +171,7 @@ const CountryInfo = () => {
                                                     <span>
                                                         {countries.find(
                                                             (country) =>
-                                                                country.cca3 ===
+                                                                country.alpha3Code ===
                                                                 alpha3Code
                                                         )?.name?.common ||
                                                             alpha3Code}
