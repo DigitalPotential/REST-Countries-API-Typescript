@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CountriesContext from "../context/CountriesContext";
 import ModeContext from "../context/ModeContext";
@@ -17,7 +17,7 @@ const Countries = () => {
         damping: 30,
         restDelta: 0.001,
     });
-    
+
     return (
         <>
             <motion.div
@@ -29,9 +29,10 @@ const Countries = () => {
                     <h2 className="text-3xl tracking-widest">Loading...</h2>
                 </div>
             ) : (
-                Array.isArray(countries) && countries.map((country, index) => {
+                Array.isArray(countries) &&
+                countries.map((country, index) => {
                     return (
-                        <>
+                        <React.Fragment key={index}>
                             <Link
                                 to={`/country/${country.name.common}`}
                                 className="w-[300px] rounded-lg shadow-lg cursor-pointer mb-[80px]"
@@ -95,7 +96,7 @@ const Countries = () => {
                                     </div>
                                 </motion.div>
                             </Link>
-                        </>
+                        </React.Fragment>
                     );
                 })
             )}
@@ -103,7 +104,12 @@ const Countries = () => {
                 <ScrollToTop
                     top={20}
                     smooth
-                    style={{ marginRight: "20px", zIndex: "10", backgroundColor: 'transparent', boxShadow: 'none' }}
+                    style={{
+                        marginRight: "20px",
+                        zIndex: "10",
+                        backgroundColor: "transparent",
+                        boxShadow: "none",
+                    }}
                     component={
                         <IonIcon
                             style={{ color: "black", fontSize: "4rem" }}
@@ -115,7 +121,12 @@ const Countries = () => {
                 <ScrollToTop
                     top={20}
                     smooth
-                    style={{ marginRight: "20px", zIndex: "10", backgroundColor: 'transparent', boxShadow: 'none' }}
+                    style={{
+                        marginRight: "20px",
+                        zIndex: "10",
+                        backgroundColor: "transparent",
+                        boxShadow: "none",
+                    }}
                     component={
                         <IonIcon
                             style={{ color: "white", fontSize: "4rem" }}

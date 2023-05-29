@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Arrow from "../assets/Arrow";
 import ArrowWhite from "../assets/ArrowWhite";
@@ -42,11 +42,9 @@ const CountryInfo = () => {
             >
                 {country.map((item) => {
                     return (
-                        <>
-                            <div className="img lg:w-[600px] lg:h-[500px] space-y-20">
-                                <motion.button
-                                    whileHover={{ scale: 1.2 }}
-                                >
+                        <React.Fragment key={item.name.common}>
+                            <div className="lg:w-[600px] lg:h-[500px] space-y-20">
+                                <motion.button whileHover={{ scale: 1.2 }}>
                                     <Link
                                         to="/"
                                         className={`${
@@ -130,11 +128,13 @@ const CountryInfo = () => {
                                         <p>
                                             Currencies:{" "}
                                             <span className="text-light-darkGray">
-                                                {item.currencies[
-                                                    Object.keys(
-                                                        item.currencies
-                                                    )[0]
-                                                ]?.name || "N/A"}
+                                                {(item.currencies &&
+                                                    item.currencies[
+                                                        Object.keys(
+                                                            item.currencies
+                                                        )[0]
+                                                    ]?.name) ||
+                                                    "N/A"}
                                             </span>
                                         </p>
                                         <p>
@@ -151,9 +151,9 @@ const CountryInfo = () => {
                                     <p className="mt-2">Border Countries:</p>
                                     {country[0]?.borders?.length ? (
                                         country[0].borders.map(
-                                            (alpha3Code, index) => (
+                                            (alpha3Code) => (
                                                 <Link
-                                                    key={index}
+                                                    key={alpha3Code}
                                                     className={`${
                                                         mode
                                                             ? "bg-white"
@@ -186,7 +186,7 @@ const CountryInfo = () => {
                                     )}
                                 </div>
                             </div>
-                        </>
+                        </React.Fragment>
                     );
                 })}
             </div>
