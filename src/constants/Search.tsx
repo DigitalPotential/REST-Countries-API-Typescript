@@ -11,6 +11,7 @@ const Search = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const formElement = event.currentTarget;
 
         try {
             const response = await fetch(`${API_URL}/name/${input}`);
@@ -20,7 +21,9 @@ const Search = () => {
             console.log(error);
         }
 
-        event.currentTarget.reset();
+        if(document.contains(formElement)) {
+            formElement.reset();
+        }
     };
 
     return (

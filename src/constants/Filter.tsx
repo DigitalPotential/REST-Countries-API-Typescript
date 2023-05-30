@@ -22,7 +22,7 @@ const Filter = ({ onSelect }: FilterProps) => {
         } w-[250px] px-[30px] py-[15px] outline-0 rounded-md shadow-lg border-0 cursor-pointer hover:opacity-50`}
         name="filter"
       >
-        <option>Filter by Region</option>
+        <option disabled selected value="">Filter by Region</option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>
         <option value="Asia">Asia</option>

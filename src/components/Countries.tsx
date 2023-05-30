@@ -4,7 +4,8 @@ import CountriesContext from "../context/CountriesContext";
 import ModeContext from "../context/ModeContext";
 import { motion, useScroll, useSpring } from "framer-motion";
 import ScrollToTop from "react-scroll-to-top";
-import IonIcon from "@reacticons/ionicons";
+import {BsFillArrowUpCircleFill} from "react-icons/bs";
+
 
 const Countries = () => {
     const { countries } = useContext(CountriesContext);
@@ -111,9 +112,8 @@ const Countries = () => {
                         boxShadow: "none",
                     }}
                     component={
-                        <IonIcon
+                        <BsFillArrowUpCircleFill
                             style={{ color: "black", fontSize: "4rem" }}
-                            name="caret-up-circle-outline"
                         />
                     }
                 />
@@ -128,7 +128,7 @@ const Countries = () => {
                         boxShadow: "none",
                     }}
                     component={
-                        <IonIcon
+                        <BsFillArrowUpCircleFill
                             style={{ color: "white", fontSize: "4rem" }}
                             name="caret-up-circle-outline"
                         />

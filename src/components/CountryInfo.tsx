@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import Arrow from "../assets/Arrow";
-import ArrowWhite from "../assets/ArrowWhite";
 import ModeContext from "../context/ModeContext";
 import { API_URL } from "../utils/api";
 import { motion } from "framer-motion";
 import { Country } from "../types/CountryAPI";
 import CountriesContext from "../context/CountriesContext";
+import { BsArrowLeft } from "react-icons/bs";
 
 const CountryInfo = () => {
     const params = useParams();
@@ -51,9 +50,9 @@ const CountryInfo = () => {
                                             mode
                                                 ? "bg-white"
                                                 : "bg-dark-darkBlue"
-                                        } py-2 px-10 rounded-md shadow-lg border-0 cursor-pointer`}
+                                        } flex flex-row py-2 px-10 rounded-md shadow-lg border-0 cursor-pointer`}
                                     >
-                                        {mode ? <Arrow /> : <ArrowWhite />}
+                                        {mode ? <div className="text-2xl flex items-center justify-center pr-3"><BsArrowLeft /></div> : <div className=" text-2xl text-white flex items-center justify-center pr-3"><BsArrowLeft /></div> }
                                         Back
                                     </Link>
                                 </motion.button>

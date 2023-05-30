@@ -1,12 +1,11 @@
 import { useContext } from "react";
-import SearcIconWhite from "../assets/SearchIconWhite";
-import SearchIcon from "../assets/SearchIcon";
 import ModeContext from "../context/ModeContext";
 import CountriesContext from "../context/CountriesContext";
 import Countries from "./Countries";
 import Search from "../constants/Search";
 import Filter from "../constants/Filter";
 import { API_URL } from "../utils/api";
+import { BsSearch } from "react-icons/bs";
 
 const Main = () => {
     const { mode } = useContext(ModeContext);
@@ -31,7 +30,7 @@ const Main = () => {
         >
             <div className="top flex flex-col gap-10 xxl:gap-0 xl:flex-row xl:justify-between xl:items-center">
                 <div className="search relative flex flex-row">
-                    {mode ? <SearchIcon /> : <SearcIconWhite />}
+                    {mode ? <div className="text-xl absolute mt-4 ml-12"><BsSearch /></div> : <div className="absolute mt-4 ml-12 text-xl text-white"><BsSearch /></div>}
                     <Search />
                     <button
                         className={`${
