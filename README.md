@@ -1,3 +1,39 @@
+## Overview
+
+This is a country information application that fetches data from an API and presents it in a user-friendly interface. The application is fully responsive, functioning flawlessly across a variety of devices and screen sizes. Users can filter countries by region, view specific details about a selected country, and switch between light and dark modes for optimal viewing comfort.
+
+Key Features
+- Retrieve and display country information from the REST Countries API
+- Filter countries by region
+- Detailed view for each country with relevant data
+- Toggle between light and dark modes
+- Responsive design ensuring an optimal user experience across devices
+- Interactive elements with hover and focus states
+
+### Links
+
+- [Live site URL:](https://rest-countries-api-xi-topaz.vercel.app/)
+
+### Screenshot
+
+[Project Screenshot](public/restCountriesApi.png)
+
+### Technologies
+
+- Vite
+- React
+- TypeScript
+- TailwindCSS
+- Mobile-first workflow
+- REST Countries API
+
+### What I learned
+
+Throughout this project, I deepened my knowledge of TypeScript in conjunction with the React library, solidifying my understanding of types and interfaces. This project allowed me to gain more experience working with external APIs, specifically the REST Countries API, which I used to fetch and display country data. Additionally, implementing the filter functionality further enhanced my problem-solving skills, particularly in the areas of data manipulation and state management. The project also reinforced the importance of UI/UX considerations in web development, as I worked to make the application responsive and user-friendly. Overall, this project has equipped me with a broader and more robust set of skills that I can apply to future development tasks.
+
+## Read about the challenge below.
+## The challange requirements are in swedish as the course that provided the challange is based in sweden.
+
 # Välkomna till Flag-Utmaningen! 🐺
 
 Kolla in design för hur projektet ska se ut:
