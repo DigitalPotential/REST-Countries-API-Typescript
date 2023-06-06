@@ -19,7 +19,7 @@ const Filter = ({ onSelect }: FilterProps) => {
         onChange={selectType}
         className={`${
           mode ? "bg-white" : "bg-dark-darkBlue"
-        } w-[250px] px-[30px] py-[15px] outline-0 rounded-md shadow-lg border-0 cursor-pointer hover:opacity-50`}
+        } sm:w-[250px] px-[30px] py-[15px] outline-0 rounded-md shadow-lg border-0 cursor-pointer hover:opacity-50`}
         name="filter"
       >
         <option disabled selected value="">Filter by Region</option>

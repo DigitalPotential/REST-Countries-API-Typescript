@@ -36,7 +36,7 @@ const Countries = () => {
                         <React.Fragment key={index}>
                             <Link
                                 to={`/country/${country.name.common}`}
-                                className="w-[300px] rounded-lg shadow-lg cursor-pointer mb-[80px]"
+                                className="w-full sm:w-[300px] rounded-lg shadow-lg cursor-pointer mb-[80px]"
                                 key={index}
                             >
                                 <motion.div
@@ -69,7 +69,7 @@ const Countries = () => {
                                             mode
                                                 ? "bg-white"
                                                 : "bg-dark-darkBlue"
-                                        } text min-h-[230px] pl-5 rounded-b-lg`}
+                                        } text min-h-[200px] pl-5 rounded-b-lg`}
                                     >
                                         <h2 className="font-[600] text-xl py-6">
                                             {country.name.common}
