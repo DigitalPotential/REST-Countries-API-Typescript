@@ -32,7 +32,7 @@ const Search = () => {
                 whileFocus={{ scale: 1.1 }}
                 className={`${
                     mode ? "bg-white" : "bg-dark-darkBlue"
-                }  font-[600] px-10 sm:px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg focus:outline-0`}
+                }  font-[600] pl-10 sm:px-[100px] py-[15px] w-[100%] md:w-[500px] rounded-md shadow-lg focus:outline-0`}
                 type="text"
                 name="name"
                 placeholder="Search for a country..."

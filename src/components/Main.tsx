@@ -30,12 +30,12 @@ const Main = () => {
         >
             <div className="top flex flex-col gap-10 xxl:gap-0 xl:flex-row xl:justify-between xl:items-center">
                 <div className="search relative flex flex-row">
-                    {mode ? <div className="text-xl absolute mt-4 ml-12"><BsSearch /></div> : <div className="absolute mt-4 ml-3 sm:ml-12 text-xl text-white"><BsSearch /></div>}
+                    {mode ? <div className="text-xl absolute mt-4 ml-3 sm:ml-12"><BsSearch /></div> : <div className="absolute mt-4 ml-3 sm:ml-12 text-xl text-white"><BsSearch /></div>}
                     <Search />
                     <button
                         className={`${
                             mode ? "bg-white" : "bg-dark-darkBlue"
-                        } py-2 px-10 rounded-md shadow-lg border-0 cursor-pointer ml-3`}
+                        } py-2 px-6 rounded-md shadow-lg border-0 cursor-pointer ml-3 sm:ml-10`}
                         onClick={() => window.location.reload()}
                     >
                         Reset
